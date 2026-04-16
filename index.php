@@ -2,23 +2,7 @@
 session_start();
 require_once 'functions.php';
 
-if (isset($_GET['lunghezza'])) {
-  $lunghezza = (int) $_GET['lunghezza'];
-  $minuscole = isset($_GET['minuscole']);
-  $maiuscole = isset($_GET['maiuscole']);
-  $numeri    = isset($_GET['numeri']);
-  $simboli   = isset($_GET['simboli']);
-  $password = generaPassword($lunghezza, $minuscole, $maiuscole, $numeri, $simboli);
-  if ($password) {
-    $_SESSION['password'] = $password;
-    header("Location: result.php");
-    exit;
-  } else {
-    	$_SESSION['errore'] = "Seleziona almeno un set di caratteri";
-      header("Location: result.php");
-      exit;
-  }
-}
+processaGenerazionePassword();
 ?>
 
 <!DOCTYPE html>
